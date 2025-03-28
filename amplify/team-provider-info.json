@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-romannumconverter-dev-24f1e-authRole",
+      "UnauthRoleArn": "arn:aws:iam::145023101595:role/amplify-romannumconverter-dev-24f1e-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::145023101595:role/amplify-romannumconverter-dev-24f1e-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-romannumconverter-dev-24f1e-deployment",
+      "UnauthRoleName": "amplify-romannumconverter-dev-24f1e-unauthRole",
+      "StackName": "amplify-romannumconverter-dev-24f1e",
+      "StackId": "arn:aws:cloudformation:us-east-2:145023101595:stack/amplify-romannumconverter-dev-24f1e/683c8b90-0c0a-11f0-b31a-06f77c8b2e77",
+      "AmplifyAppId": "d1yemmwkdeqczg"
+    }
+  }
+}
