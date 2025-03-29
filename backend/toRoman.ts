@@ -9,6 +9,11 @@ export const toRoman = (number: number): string => {
     throw new Error("Number must be between 1 and 3999");
   }
 
+  // Check if the number is an integer
+  if (!Number.isInteger(number)) {
+    throw new Error("Number must be an integer");
+  }
+
   const romanNumerals = [
     { value: 1000, numeral: "M" },
     { value: 900, numeral: "CM" },
