@@ -27,8 +27,8 @@ const logger = winston.createLogger({
   ),
   defaultMeta: { service: "roman-numeral-service" },
   transports: [
-    new winston.transports.File({ filename: "error.log", level: "error" }),
-    new winston.transports.File({ filename: "combined.log" }),
+    new winston.transports.File({ filename: "error.log", level: "error" }), // Log errors to a separate file
+    new winston.transports.File({ filename: "combined.log" }), // Log all messages to a combined file
     new winston.transports.Console(),
   ],
 });
