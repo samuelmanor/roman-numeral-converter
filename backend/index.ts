@@ -46,14 +46,22 @@ app.use((request: Request, response: Response, next: NextFunction) => {
 app.get("/romannumeral", (request: Request, response: Response) => {
   const query = request.query.query;
 
+  // Check if the query parameter is provided
   if (typeof query !== "string") {
-    response.status(400).send("Invalid query");
+    response.status(400).send("Invalid number");
     return;
   }
 
-  // Check if the query can be converted to a number
   const number = parseInt(query);
-  if (query.includes(".") || isNaN(number)) {
+
+  // Check if the number is an integer
+  if (query.includes(".")) {
+    response.status(400).send("Number must be an integer");
+    return;
+  }
+
+  // Check if the parsed number is valid
+  if (isNaN(number)) {
     response.status(400).send("Invalid number");
     return;
   }
