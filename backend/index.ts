@@ -3,8 +3,10 @@ import { NextFunction, Request, Response } from "express";
 import { toRoman } from "./toRoman";
 const winston = require("winston");
 const { combine, timestamp, printf, colorize, align } = winston.format;
+const cors = require("cors");
 
 const app = express();
+app.use(cors()); // Enable CORS for all routes
 
 // Logs incoming requests to the console
 const logger = winston.createLogger({
