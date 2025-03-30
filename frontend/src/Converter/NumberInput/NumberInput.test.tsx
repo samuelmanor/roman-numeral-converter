@@ -10,7 +10,6 @@ describe("NumberInput component", () => {
     render(<NumberInput value="" onChange={() => {}} />);
     expect(screen.getByLabelText(/enter a number:/i)).toBeInTheDocument();
   });
-
   it("Accepts valid input", () => {
     render(<NumberInput value="10" onChange={handleChange} />);
 
@@ -23,19 +22,16 @@ describe("NumberInput component", () => {
       screen.queryByText("Number must be between 1 and 3999")
     ).not.toBeInTheDocument();
   });
-
   it("Displays error for non-numeric input", () => {
     render(<NumberInput value="abc" onChange={handleChange} />);
 
     expect(screen.getByText("Invalid number")).toBeInTheDocument();
   });
-
   it("Displays error for decimal numbers", () => {
     render(<NumberInput value="10.5" onChange={handleChange} />);
 
     expect(screen.getByText("Number must be an integer")).toBeInTheDocument();
   });
-
   it("Displays error for numbers less than 1", () => {
     render(<NumberInput value="0" onChange={handleChange} />);
 
@@ -43,7 +39,6 @@ describe("NumberInput component", () => {
       screen.getByText("Number must be between 1 and 3999")
     ).toBeInTheDocument();
   });
-
   it("Displays error for numbers greater than 3999", () => {
     render(<NumberInput value="4000" onChange={handleChange} />);
 
@@ -51,7 +46,6 @@ describe("NumberInput component", () => {
       screen.getByText("Number must be between 1 and 3999")
     ).toBeInTheDocument();
   });
-
   it("Calls onChange when input value changes", () => {
     render(<NumberInput value="" onChange={handleChange} />);
 
