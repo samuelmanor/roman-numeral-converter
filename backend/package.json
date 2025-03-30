@@ -7,7 +7,7 @@
   "type": "commonjs",
   "main": "index.ts",
   "scripts": {
-    "start": "npx ts-node --require ./instrumentation.ts index.ts",
+    "start": "npx ts-node --require ./utils/instrumentation.ts index.ts",
     "test": "jest"
   },
   "devDependencies": {

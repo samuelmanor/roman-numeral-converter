@@ -27,12 +27,11 @@ export const NumberInput: FC<NumberInputProps> = ({ value, onChange }) => {
     } else {
       error = undefined; // Clear error if valid
     }
-  }
+  } // test for negative numbers
 
   return (
     <TextField
       label="Enter a number:"
-      autoFocus
       value={value}
       onChange={onChange}
       validationState={error ? "invalid" : undefined}

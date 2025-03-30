@@ -11,7 +11,7 @@ describe("GET /romannumeral", () => {
   test("Returns 400 for missing query parameter", async () => {
     const response = await request(app).get("/romannumeral");
     expect(response.status).toBe(400);
-    expect(response.text).toBe("Invalid query");
+    expect(response.text).toBe("Invalid number");
   });
 
   test("Returns 400 for non-numeric query", async () => {
@@ -23,7 +23,7 @@ describe("GET /romannumeral", () => {
   test("Returns 400 for decimal number", async () => {
     const response = await request(app).get("/romannumeral?query=12.5");
     expect(response.status).toBe(400);
-    expect(response.text).toBe("Invalid number");
+    expect(response.text).toBe("Number must be an integer");
   });
 
   test("Returns 400 if number is less than 1", async () => {
