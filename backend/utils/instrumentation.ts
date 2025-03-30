@@ -17,3 +17,13 @@ const sdk = new NodeSDK({
 });
 
 sdk.start(); // Starts the OpenTelemetry SDK, enabling tracing and metrics collection
+
+// Handle shutdown gracefully
+// This ensures that all pending spans and metrics are flushed before the process exits
+process.on("SIGTERM", () => {
+  sdk
+    .shutdown()
+    .then(() => console.log("Tracing terminated"))
+    .catch((error) => console.log("Error terminating tracing", error))
+    .finally(() => process.exit(0));
+});
