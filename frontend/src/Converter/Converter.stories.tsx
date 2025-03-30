@@ -56,6 +56,7 @@ export const Default: Story = {
       // Click the submit button
       await userEvent.click(submitButton);
 
+      // If the backend is running, request will be successful and the output will be displayed
       await waitFor(() => {
         expect(output).toHaveTextContent("Roman numeral: X"); // Ensure the output is correct
       });
