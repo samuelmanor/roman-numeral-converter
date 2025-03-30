@@ -8,11 +8,12 @@ import {
 } from "@opentelemetry/sdk-metrics";
 
 const sdk = new NodeSDK({
-  traceExporter: new ConsoleSpanExporter(),
+  traceExporter: new ConsoleSpanExporter(), // Exports trace data to the console
   metricReader: new PeriodicExportingMetricReader({
-    exporter: new ConsoleMetricExporter(),
+    // Exports metrics data periodically
+    exporter: new ConsoleMetricExporter(), // Exports metrics data to the console
   }),
-  instrumentations: [getNodeAutoInstrumentations()],
+  instrumentations: [getNodeAutoInstrumentations()], // Automatically instruments various Node.js libraries for tracing and metrics
 });
 
-sdk.start();
+sdk.start(); // Starts the OpenTelemetry SDK, enabling tracing and metrics collection

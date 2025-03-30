@@ -11,6 +11,7 @@ export const logger = winston.createLogger({
     timestamp(),
     align(),
     printf(
+      // Custom format for log messages
       (info) =>
         `[${info.timestamp}] ${info.level}: ${info.message} (${info.method} ${
           info.path
@@ -21,7 +22,7 @@ export const logger = winston.createLogger({
   transports: [
     new winston.transports.File({ filename: "error.log", level: "error" }), // Log errors to a separate file
     new winston.transports.File({ filename: "combined.log" }), // Log all messages to a combined file
-    new winston.transports.Console(),
+    new winston.transports.Console(), // Log to the console for development
   ],
 });
 

@@ -55,6 +55,7 @@ export const Converter: FC = () => {
         borderColor="dark"
         borderRadius="medium"
         padding="size-400"
+        data-test-id="converter-form" // For testing purposes
       >
         <Header>
           <Heading id="app-title">Roman numeral converter</Heading>
