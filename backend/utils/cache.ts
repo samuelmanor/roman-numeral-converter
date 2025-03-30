@@ -5,7 +5,11 @@ const options = {
   ttl: 3600000, // Time-to-live in milliseconds (1 hour)
 };
 
-// Create an instance of LRUCache with the specified options
+/**
+ * This is an LRU (Least Recently Used) cache that stores key-value pairs.
+ * It uses the `lru-cache` library to manage the cache.
+ * The cache will store up to 100 items, and each item will expire after 1 hour (3600000 milliseconds).
+ */
 const cache = new LRUCache(options);
 
 /*
