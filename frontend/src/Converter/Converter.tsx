@@ -27,6 +27,11 @@ export const Converter: FC = () => {
     // console.log("Form submitted");
     // console.log(input);
 
+    // Prevent submission if the input is empty
+    if (input.length === 0) {
+      return;
+    }
+
     try {
       const response = await fetch(
         `http://localhost:8080/romannumeral?query=${input}`,
@@ -60,7 +65,12 @@ export const Converter: FC = () => {
           validationBehavior="native" // Prevents submission if the input is invalid
         >
           <NumberInput value={input} onChange={setInput} />
-          <Button variant="primary" type="submit" style="fill">
+          <Button
+            variant="primary"
+            type="submit"
+            style="fill"
+            isDisabled={!input}
+          >
             Convert
           </Button>
           <Text>Roman numeral: {romanNumeral}</Text>

@@ -20,6 +20,8 @@ export const NumberInput: FC<NumberInputProps> = ({ value, onChange }) => {
 
     if (isNaN(number)) {
       error = "Invalid number";
+    } else if (value.includes(" ")) {
+      error = "Number cannot contain spaces";
     } else if (value.includes(".")) {
       error = "Number must be an integer";
     } else if (number < 1 || number > 3999) {
@@ -27,7 +29,7 @@ export const NumberInput: FC<NumberInputProps> = ({ value, onChange }) => {
     } else {
       error = undefined; // Clear error if valid
     }
-  } // test for negative numbers
+  }
 
   return (
     <TextField
