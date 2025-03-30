@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { toRoman } from "./toRoman";
 const cors = require("cors");
 import { requestLogger } from "./utils/middleware";
+import cache from "./utils/cache";
 
 const app = express();
 app.use(cors()); // Enable CORS for all routes
@@ -38,6 +39,21 @@ app.get("/romannumeral", (request: Request, response: Response) => {
     return;
   }
 
+  // Check if the result is already in the cache
+  if (cache.has(query)) {
+    console.log(`Cache hit for query: ${query}`); // Log cache hit
+    // If the result is in the cache, return it
+    return response.json({ input: query, output: cache.get(query) });
+  }
+
+  // Convert the number to Roman numeral
+  const romanNumeral = toRoman(number);
+
+  // Store the result in the cache
+  cache.set(query, romanNumeral);
+  console.log(`Cache miss for query: ${query}`); // Log cache miss
+
+  // Return the result as JSON
   return response.json({ input: query, output: toRoman(number) });
 });
 
