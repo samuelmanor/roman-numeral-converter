@@ -21,6 +21,10 @@ interface RenderOptions extends BaseRenderOptions {
   providerProps: Omit<ProviderProps, "children">;
 }
 
+/**
+ * Custom render function that wraps components with the Adobe React Spectrum Provider.
+ * This provides the correct theme and context to components during testing.
+ */
 function customRender(ui: ReactElement, options?: RenderOptions) {
   let rendered = render(ui, {
     wrapper: (props) => (
