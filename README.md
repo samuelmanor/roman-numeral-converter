@@ -1,46 +1,114 @@
-# Getting Started with Create React App
+# Roman Numeral Converter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Technologies Used](#technologies-used)
 
-In the project directory, you can run:
+# Introduction
 
-### `npm start`
+# Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 1. Fork and clone the repository
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Click the **Fork** button in the top right corner of the GitHub repository to create a copy on your own account.
+Once forked, open a terminal and run the command:
 
-### `npm test`
+```bash
+  git clone https://github.com/<your-username>/roman-numeral-converter.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Then navigate into the project:
 
-### `npm run build`
+```bash
+  cd roman-numeral-converter
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Set up the app with Docker
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+First, make sure you have [Docker](https://docs.docker.com/get-started/get-docker/).
+Then, build and start the application with:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+  docker-compose up --build
+```
 
-### `npm run eject`
+This builds the Docker images for both the frontend and backend, then starts and connects them.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Once the app is running, it should be available at:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Frontend**: `http://localhost:3000`
+- **Backend**: `http://localhost:8080`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To stop the containers, press `Ctrl+C` in the terminal, click the "stop" button in the Docker application, or run:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+  docker-compose down
+```
 
-## Learn More
+### 3. Running the app manually (without Docker)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Open one terminal to serve the purposes for the backend, and navigate to the correct folder:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+  cd backend
+```
+
+Then install dependencies:
+
+```bash
+  npm install
+```
+
+And finally, start the backend server:
+
+```bash
+  npm start
+```
+
+The backend service will be available at `http://localhost:8080`, just like when it's set up with Docker.
+
+For the frontend, open another terminal and navigate to the frontend folder:
+
+```bash
+  cd frontend
+```
+
+Install dependencies:
+
+```bash
+  npm install
+```
+
+Then start the frontend server:
+
+```bash
+  npm start
+```
+
+The frontend will can be accessed via `https://localhost:3000`, also just like with Docker.
+
+# Technologies Used
+
+## Frontend
+
+#### Storybook
+
+#### Testing Library
+
+#### Cypress
+
+#### Web-Vitals
+
+## Backend
+
+#### Express
+
+#### Jest
+
+#### Winston
+
+#### OpenTelemetry
+
+#### LRU-Cache
