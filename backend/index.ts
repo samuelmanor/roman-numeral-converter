@@ -41,7 +41,7 @@ app.get("/romannumeral", (request: Request, response: Response) => {
 
   // Check if the result is already in the cache
   if (cache.has(query)) {
-    console.log(`Cache hit for query: ${query}`); // Log cache hit
+    console.log(`Cache hit for query: ${query}`);
     // If the result is in the cache, return it
     return response.json({ input: query, output: cache.get(query) });
   }
@@ -51,7 +51,7 @@ app.get("/romannumeral", (request: Request, response: Response) => {
 
   // Store the result in the cache
   cache.set(query, romanNumeral);
-  console.log(`Cache miss for query: ${query}`); // Log cache miss
+  console.log(`Cache miss for query: ${query}`);
 
   // Return the result as JSON
   return response.json({ input: query, output: toRoman(number) });

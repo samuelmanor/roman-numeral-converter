@@ -24,9 +24,6 @@ export const NumeralConverter: FC = () => {
     // Prevent the default form submission behavior (i.e., page reload)
     e.preventDefault();
 
-    // console.log("Form submitted");
-    // console.log(input);
-
     // Prevent submission if the input is empty
     if (input.length === 0) {
       return;
@@ -55,7 +52,7 @@ export const NumeralConverter: FC = () => {
         borderColor="dark"
         borderRadius="medium"
         padding="size-400"
-        data-test-id="converter-form" // For testing purposes
+        data-test-id="converter-form"
       >
         <Header>
           <Heading id="app-title">Roman numeral converter</Heading>
