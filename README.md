@@ -39,7 +39,7 @@ Once the app is running, it should be available at:
 - **Frontend**: `http://localhost:3000`
 - **Backend**: `http://localhost:8080`
 
-To stop the containers, press `Ctrl+C` in the terminal, click the "stop" button in the Docker application, or run:
+To stop the containers, run:
 
 ```bash
   docker-compose down
@@ -155,3 +155,7 @@ Winston provides a simple function to log incoming requests to the console. I cu
 #### LRU-Cache
 
 I used this to implement a simple LRU cache to reduce the load on the backend. If a given query exists in the cache, the route will return the output from the cache object instead of re-running the `toRoman` function. If a query does not previously exist in the cache, it will be added, but the cache deletes the least recently used items. I wanted to add this to optimize performance/reduce the load on the backend.
+
+## Observability
+
+The app is monitored in a few different ways. Winston logs incoming requests, and OpenTelemetry logs metrics/traces to the console (though the line that adds this functionality is commented out, since it logs so much). Right-clicking, then clicking inspect and going into the Perfomance tab shows the readout from Web-Vitals. There's also a Sentry integration, which also monitors performance as well as errors, to keep track of any errors that might come up in production that didn't during development.
