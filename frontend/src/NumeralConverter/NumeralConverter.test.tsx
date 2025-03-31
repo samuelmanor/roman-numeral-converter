@@ -1,13 +1,20 @@
 import { render } from "../customRender";
-import { Converter } from "./Converter";
+import { NumeralConverter } from "./NumeralConverter";
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 
 describe("Converter component", () => {
-  it("Renders without errors", () => {
-    render(<Converter />);
+  beforeEach(() => {
+    // Clear all mocks before each test to ensure a clean state
+    jest.clearAllMocks();
+    // Reset the fetch mock to its original implementation
+    global.fetch = jest.fn() as jest.Mock;
 
+    // Render the component
+    render(<NumeralConverter />);
+  });
+  it("Renders without errors", () => {
     const titleElement = screen.getByText("Roman numeral converter");
     expect(titleElement).toBeInTheDocument();
 
@@ -18,8 +25,6 @@ describe("Converter component", () => {
     expect(submitButton).toBeInTheDocument();
   });
   it("Displays Roman numeral from successful conversion", async () => {
-    render(<Converter />);
-
     const user = userEvent.setup();
 
     // Mock the fetch API to simulate a successful response
@@ -44,8 +49,6 @@ describe("Converter component", () => {
     expect(resultElement).toBeInTheDocument();
   });
   it("Handles fetch error correctly", async () => {
-    render(<Converter />);
-
     const user = userEvent.setup();
 
     // Mock the fetch API to simulate an unsuccessful response
@@ -66,8 +69,6 @@ describe("Converter component", () => {
     expect(resultElement).not.toBeInTheDocument();
   });
   it("Does not submit the form when input is invalid", async () => {
-    render(<Converter />);
-
     const user = userEvent.setup();
 
     // Mock the fetch API to ensure it doesn't get called
@@ -85,8 +86,6 @@ describe("Converter component", () => {
     expect(global.fetch).not.toHaveBeenCalled();
   });
   it("Enables submit button only after input", async () => {
-    render(<Converter />);
-
     const user = userEvent.setup();
 
     // Mock the fetch API to ensure it doesn't get called

@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { expect, userEvent, waitFor, within } from "@storybook/test";
-import { defaultTheme, Provider, View } from "@adobe/react-spectrum";
+import { defaultTheme, Provider } from "@adobe/react-spectrum";
 
-import { Converter } from "./Converter";
+import { NumeralConverter } from "./NumeralConverter";
 
 const meta: Meta = {
-  title: "Converter",
-  component: Converter,
+  title: "NumeralConverter",
+  component: NumeralConverter,
   parameters: {
     layout: "centered",
   },

@@ -13,7 +13,7 @@ import { NumberInput } from "./NumberInput";
 /**
  * A form that allows users to input a number and convert it to a Roman numeral.
  */
-export const Converter: FC = () => {
+export const NumeralConverter: FC = () => {
   const [input, setInput] = React.useState<string>("");
   const [romanNumeral, setRomanNumeral] = React.useState<string>("");
 

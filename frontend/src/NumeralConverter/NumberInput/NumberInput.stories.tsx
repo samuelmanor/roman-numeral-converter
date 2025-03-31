@@ -5,7 +5,7 @@ import { defaultTheme, Provider, View } from "@adobe/react-spectrum";
 import { NumberInput } from "./NumberInput";
 
 const meta: Meta = {
-  title: "Converter/NumberInput",
+  title: "NumeralConverter/NumberInput",
   component: NumberInput,
   parameters: {
     layout: "centered",
