@@ -16,6 +16,8 @@ Sentry.init({
 const app = express();
 app.use(cors()); // Enable CORS for all routes
 
+app.use(requestLogger); // Use the request logger middleware to log incoming requests to the console
+
 app.get("/romannumeral", (request: Request, response: Response) => {
   const query = request.query.query;
 
@@ -64,8 +66,6 @@ app.get("/romannumeral", (request: Request, response: Response) => {
 });
 
 Sentry.setupExpressErrorHandler(app);
-
-app.use(requestLogger); // Use the request logger middleware to log incoming requests to the console
 
 // Start the server if this file is run directly
 if (require.main === module) {
