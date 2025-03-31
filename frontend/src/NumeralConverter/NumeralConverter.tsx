@@ -3,9 +3,8 @@ import {
   Button,
   Flex,
   Form,
-  Header,
-  Heading,
   Text,
+  ToastQueue,
   View,
 } from "@adobe/react-spectrum";
 import { NumberInput } from "./NumberInput";
@@ -41,7 +40,14 @@ export const NumeralConverter: FC = () => {
       const data = await response.json();
       setRomanNumeral(data.output);
     } catch (error) {
-      console.error("Error fetching Roman numeral:", error);
+      // Handle errors that may occur during the fetch request
+      if (error instanceof Error) {
+        if (error.message === "Failed to fetch") {
+          ToastQueue.negative("Network error", { timeout: 5000 });
+        } else {
+          ToastQueue.negative(error.message, { timeout: 5000 });
+        }
+      }
     }
   };
 
@@ -54,11 +60,9 @@ export const NumeralConverter: FC = () => {
         padding="size-400"
         data-test-id="converter-form"
       >
-        <Header>
-          <Heading id="app-title">Roman numeral converter</Heading>
-        </Header>
+        <h3 id="converter-title">Roman numeral converter</h3>
         <Form
-          aria-labelledby="app-title"
+          aria-labelledby="converter-title"
           onSubmit={onSubmit}
           validationBehavior="native" // Prevents submission if the input is invalid
         >
