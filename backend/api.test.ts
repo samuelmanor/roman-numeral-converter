@@ -20,10 +20,28 @@ describe("GET /romannumeral", () => {
     expect(response.text).toBe("Invalid number");
   });
 
+  test("Returns 400 for query with any letters", async () => {
+    const response = await request(app).get("/romannumeral?query=55a");
+    expect(response.status).toBe(400);
+    expect(response.text).toBe("Invalid number");
+  });
+
+  test("Returns 400 for query with special characters", async () => {
+    const response = await request(app).get("/romannumeral?query=55!");
+    expect(response.status).toBe(400);
+    expect(response.text).toBe("Invalid number");
+  });
+
+  test("Returns 400 for fractional number", async () => {
+    const response = await request(app).get("/romannumeral?query=3/4");
+    expect(response.status).toBe(400);
+    expect(response.text).toBe("Invalid number");
+  });
+
   test("Returns 400 for decimal number", async () => {
     const response = await request(app).get("/romannumeral?query=12.5");
     expect(response.status).toBe(400);
-    expect(response.text).toBe("Number must be an integer");
+    expect(response.text).toBe("Invalid number");
   });
 
   test("Returns 400 if number is less than 1", async () => {

@@ -20,10 +20,10 @@ export const NumberInput: FC<NumberInputProps> = ({ value, onChange }) => {
 
     if (isNaN(number)) {
       error = "Invalid number";
-    } else if (value.includes(" ")) {
-      error = "Number cannot contain spaces";
     } else if (value.includes(".")) {
       error = "Number must be an integer";
+    } else if (value.includes(" ") || !/^\d+$/.test(value)) {
+      error = "Number cannot contain spaces or special characters";
     } else if (number < 1 || number > 3999) {
       error = "Number must be between 1 and 3999";
     } else {

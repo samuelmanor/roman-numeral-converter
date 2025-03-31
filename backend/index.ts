@@ -27,19 +27,25 @@ app.get("/romannumeral", (request: Request, response: Response) => {
     return;
   }
 
-  const number = parseInt(query);
-
-  // Check if the number is an integer
-  if (query.includes(".")) {
-    response.status(400).send("Number must be an integer");
-    return;
-  }
-
-  // Check if the parsed number is valid
-  if (isNaN(number)) {
+  // Check if the query parameter contains any letters or symbols
+  if (!/^[0-9]*$/.test(query)) {
     response.status(400).send("Invalid number");
     return;
   }
+
+  const number = parseInt(query);
+
+  // // Check if the number is an integer
+  // if (query.includes(".") || query.includes("/") || query.includes("\\")) {
+  //   response.status(400).send("Number must be an integer");
+  //   return;
+  // }
+
+  // // Check if the parsed number is valid
+  // if (isNaN(number)) {
+  //   response.status(400).send("Invalid number");
+  //   return;
+  // }
 
   // Check if the number is within the valid range
   if (number < 1 || number > 3999) {
