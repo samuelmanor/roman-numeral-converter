@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@adobe/react-spectrum": "^3.40.1",
+    "@sentry/cli": "^2.43.0",
+    "@sentry/react": "^9.10.1",
     "@testing-library/dom": "^10.4.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.126",
@@ -17,12 +19,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && npm run sentry:sourcemaps",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org sam-manor --project javascript-react . && sentry-cli sourcemaps upload --org sam-manor --project javascript-react ."
   },
   "eslintConfig": {
     "extends": [

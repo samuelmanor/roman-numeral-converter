@@ -1,14 +1,20 @@
 const express = require("express");
 import { Request, Response } from "express";
+import * as Sentry from "@sentry/node";
 import { toRoman } from "./toRoman";
 const cors = require("cors");
 import { requestLogger } from "./utils/middleware";
 import cache from "./utils/cache";
 
+Sentry.init({
+  dsn: "https://a56702b0f68ec8f23bfbb13cc23a78d6@o4509073295933440.ingest.us.sentry.io/4509073297702912",
+  tracesSampleRate: 1.0, // Captures 100% of transactions for performance monitoring.
+  profilesSampleRate: 1.0, // Captures 100% of profiles for performance monitoring.
+  // Adjust the sample rate in production as needed
+});
+
 const app = express();
 app.use(cors()); // Enable CORS for all routes
-
-app.use(requestLogger); // Use the request logger middleware to log incoming requests
 
 app.get("/romannumeral", (request: Request, response: Response) => {
   const query = request.query.query;
@@ -56,6 +62,10 @@ app.get("/romannumeral", (request: Request, response: Response) => {
   // Return the result as JSON
   return response.json({ input: query, output: toRoman(number) });
 });
+
+Sentry.setupExpressErrorHandler(app);
+
+app.use(requestLogger); // Use the request logger middleware to log incoming requests to the console
 
 // Start the server if this file is run directly
 if (require.main === module) {
